@@ -8,6 +8,12 @@ document.querySelector('#app').innerHTML = `
 
     <div id="taskbar">
       <button id="k-menu-btn">K</button>
+      <div id="k-menu">
+        <div class="k-menu-item" data-app="terminal">Terminal</div>
+        <div class="k-menu-item" data-app="editor">Text Editor</div>
+        <div class="k-menu-separator"></div>
+        <div class="k-menu-item" data-app="about">System Info</div>
+      </div>
       <div id="clock-widget">
         <div class="clock">--:--</div>
         <div class="date">--- --</div>
@@ -113,9 +119,46 @@ function spawnWindow(title, contentHTML, contentBgColor = '#ffffff') {
   desktop.appendChild(windowEl);
 }
 
-document.getElementById('k-menu-btn').addEventListener('click', () => {
-  spawnWindow('Terminal', '<p style="color: #00ff00; font-family: monospace; margin: 0;">wirenux@klassicOS:~$ echo "Hi Stardance !"</p>', '#000')
-})
+const kMenuBtn = document.getElementById('k-menu-btn');
+const kMenu = document.getElementById('k-menu');
+
+kMenuBtn.addEventListener('click', (e) => {
+  e.stopPropagation(); // Stops immediate dismissal from window listener below
+  kMenu.classList.toggle('show');
+});
+
+document.addEventListener('click', () => {
+  kMenu.classList.remove('show');
+});
+
+kMenu.addEventListener('click', (e) => {
+  const targetItem = e.target.closest('.k-menu-item');
+  if (!targetItem) return;
+
+  const appType = targetItem.dataset.app;
+
+  if (appType === 'terminal') {
+    spawnWindow(
+      'Terminal', 
+      '<p style="color: #00ff00; font-family: \'departureMono\'; margin: 0;">wirenux@klassicOS:~$ echo "Hi Stardance :-)"</p>', 
+      '#000000'
+    );
+  } else if (appType === 'editor') {
+    spawnWindow(
+      'KWrite Text Editor',
+      '<textarea style="width: 99%; height: 97%; border: none; resize: none; font-family: \'departureMono\'; outline: none;" placeholder="Type text here..."></textarea>',
+      '#ffffff'
+    );
+  } else if (appType === 'about') {
+    spawnWindow(
+      'System Info',
+      '<div style="font-family: \'departureMono\'; font-size: 13px; color: #000;"><h3 style="margin-top:0;">KlassicOS v?.? dev</h3><p>A retro webOS copying the KDE 1 style</p><p>Running with Vite + Vanilla JS</p></div>',
+      '#D6CEB9'
+    );
+  }
+
+  kMenu.classList.remove('show');
+});
 
 updateClock();
 setInterval(updateClock, 1000);
