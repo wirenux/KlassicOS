@@ -18,6 +18,15 @@ export const BrowserApp = {
                 <button class="option-bar-btn">Help</button>
             </div>
             <hr />
+            <div id="control-bar">
+                <button class="control-btn"><span class="icon control-back-arrow"></span></button>
+                <button class="control-btn"><span class="icon control-front-arrow"></span></button>
+                <button class="control-btn"><span class="icon control-home"></span></button>
+
+                <button class="control-btn"><span class="icon control-refresh"></span></button>
+                <button class="control-btn"><span class="icon control-print"></span></button>
+                <button class="control-btn"><span class="icon control-search"></span></button>
+            </div>
         `;
     },
 
