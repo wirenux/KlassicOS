@@ -19,7 +19,7 @@ export const BrowserApp = {
             </div>
 
             <hr />
-            
+
             <div class="toolbar-wrapper">
                 <div class="toolbar-left-column">
                     <div id="control-bar">
@@ -52,6 +52,10 @@ export const BrowserApp = {
                 <button class="address-btn">Net Search</button>
                 <button class="address-btn">People</button>
                 <button class="address-btn">Software</button>
+            </div>
+
+            <div class="browser-viewport">
+                <iframe src="about:blank" class="browser-iframe"></iframe>
             </div>
         `;
     },
