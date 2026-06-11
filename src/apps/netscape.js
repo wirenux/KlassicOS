@@ -61,7 +61,44 @@ export const BrowserApp = {
     },
 
     init(windowEl) {
-        // static app
+        const addressInput = windowEl.querySelector('.address-input');
+        const iframe = windowEl.querySelector('.browser-iframe');
+        const homeBtn = windowEl.querySelector('.control-home');
+        const refreshBtn = windowEl.querySelector('.control-refresh');
+
+        function navigateTo(url) {
+            if (!url.trim()) {
+                return;
+            }
+
+            let targetUrl = url.trim();
+            if (!/^https?:\/\//i.test(targetUrl)) {
+                targetUrl = 'https://' + targetUrl;
+            }
+
+            const iframeProxy = "https://corsproxy.io/?url=";
+
+            iframe.src = iframeProxy + encodeURIComponent(targetUrl);
+            addressInput.value = targetUrl;
+        }
+
+        addressInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                navigateTo(addressInput.value);
+            }
+        });
+
+        if (homeBtn) {
+            homeBtn.addEventListener('click', () => {
+                navigateTo('duckduckgo.com');
+            })
+        }
+
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', () => {
+                iframe.src = iframe.src;
+            })
+        }
     }
       
 }
