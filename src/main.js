@@ -1,4 +1,9 @@
 import './style.css'
+import { TerminalApp } from './apps/terminal.js';
+
+const APP_REGISTRY = {
+  terminal: TerminalApp,
+};
 
 document.querySelector('#app').innerHTML = `
   <div id="desktop">
@@ -41,7 +46,7 @@ function updateClock() {
   document.querySelector('.date').textContent = `${month} ${day}`;
 }
 
-function spawnWindow(title, contentHTML, contentBgColor = '#ffffff') {
+function spawnWindow(appConfig) {
   const workspace = document.getElementById('workspace');
   const taskbarApps = document.getElementById('taskbar-apps');
 
@@ -56,22 +61,22 @@ function spawnWindow(title, contentHTML, contentBgColor = '#ffffff') {
 
   windowEl.innerHTML = `
     <div class="kde-titlebar">
-      <div class="titlebar-title">${title}</div>
+      <div class="titlebar-title">${appConfig.title}</div>
       <div class="titlebar-control">
         <button class="win-btn min-btn">_</button>
         <button class="win-btn max-btn">⃞</button>
         <button class="win-btn close-btn">×</button>
       </div>
     </div>
-    <div class="kde-window-content" style="background-color: ${contentBgColor};">
-      ${contentHTML}
+    <div class="kde-window-content" style="background-color: ${appConfig.contentBgColor || '#ffffff'};">
+      ${appConfig.render()}
     </div>
   `;
 
   const taskBtn = document.createElement('button');
   taskBtn.className = 'taskbar-btn';
   taskBtn.id = `btn-${windowId}`;
-  taskBtn.textContent = title;
+  taskBtn.textContent = appConfig.title;
   taskbarApps.appendChild(taskBtn);
 
   function focusWindow() {
@@ -169,6 +174,11 @@ function spawnWindow(title, contentHTML, contentBgColor = '#ffffff') {
 
   workspace.appendChild(windowEl);
   focusWindow();
+
+  if (typeof appConfig.init === 'function') {
+    appConfig.init(windowEl);
+  }
+
   return windowEl;
 }
 
@@ -189,26 +199,31 @@ kMenu.addEventListener('click', (e) => {
   if (!targetItem) return;
 
   const appType = targetItem.dataset.app;
+  const selectedApp = APP_REGISTRY[appType];
 
-  if (appType === 'terminal') {
-    spawnWindow(
-      'Terminal', 
-      '<p style="color: #00ff00; font-family: \'departureMono\'; margin: 0;">wirenux@klassicOS:~$ echo "Hi Stardance :-)"</p>', 
-      '#000000'
-    );
-  } else if (appType === 'editor') {
-    spawnWindow(
-      'KWrite Text Editor',
-      '<textarea style="width: 99%; height: 97%; border: none; resize: none; font-family: \'departureMono\'; outline: none;" placeholder="Type text here..."></textarea>',
-      '#ffffff'
-    );
-  } else if (appType === 'about') {
-    spawnWindow(
-      'System Info',
-      '<div style="font-family: \'departureMono\'; font-size: 13px; color: #000;"><h3 style="margin-top:0;">KlassicOS v?.? dev</h3><p>A retro webOS copying the KDE 1 style</p><p>Running with Vite + Vanilla JS</p></div>',
-      '#D6CEB9'
-    );
+  if (selectedApp) {
+    spawnWindow(selectedApp);
   }
+
+  // if (appType === 'terminal') {
+  //   spawnWindow(
+  //     'Terminal', 
+  //     '<p style="color: #00ff00; font-family: \'departureMono\'; margin: 0;">wirenux@klassicOS:~$ echo "Hi Stardance :-)"</p>', 
+  //     '#000000'
+  //   );
+  // } else if (appType === 'editor') {
+  //   spawnWindow(
+  //     'KWrite Text Editor',
+  //     '<textarea style="width: 99%; height: 97%; border: none; resize: none; font-family: \'departureMono\'; outline: none;" placeholder="Type text here..."></textarea>',
+  //     '#ffffff'
+  //   );
+  // } else if (appType === 'about') {
+  //   spawnWindow(
+  //     'System Info',
+  //     '<div style="font-family: \'departureMono\'; font-size: 13px; color: #000;"><h3 style="margin-top:0;">KlassicOS v?.? dev</h3><p>A retro webOS copying the KDE 1 style</p><p>Running with Vite + Vanilla JS</p></div>',
+  //     '#D6CEB9'
+  //   );
+  // }
 
   kMenu.classList.remove('show');
 });
