@@ -1,8 +1,12 @@
 import './style.css'
 import { TerminalApp } from './apps/terminal.js';
+import { AboutApp } from './apps/about.js';
+import { EditorApp } from './apps/editor.js';
 
 const APP_REGISTRY = {
   terminal: TerminalApp,
+  about: AboutApp,
+  editor: EditorApp,
 };
 
 document.querySelector('#app').innerHTML = `
