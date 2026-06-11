@@ -209,26 +209,6 @@ kMenu.addEventListener('click', (e) => {
     spawnWindow(selectedApp);
   }
 
-  // if (appType === 'terminal') {
-  //   spawnWindow(
-  //     'Terminal', 
-  //     '<p style="color: #00ff00; font-family: \'departureMono\'; margin: 0;">wirenux@klassicOS:~$ echo "Hi Stardance :-)"</p>', 
-  //     '#000000'
-  //   );
-  // } else if (appType === 'editor') {
-  //   spawnWindow(
-  //     'KWrite Text Editor',
-  //     '<textarea style="width: 99%; height: 97%; border: none; resize: none; font-family: \'departureMono\'; outline: none;" placeholder="Type text here..."></textarea>',
-  //     '#ffffff'
-  //   );
-  // } else if (appType === 'about') {
-  //   spawnWindow(
-  //     'System Info',
-  //     '<div style="font-family: \'departureMono\'; font-size: 13px; color: #000;"><h3 style="margin-top:0;">KlassicOS v?.? dev</h3><p>A retro webOS copying the KDE 1 style</p><p>Running with Vite + Vanilla JS</p></div>',
-  //     '#D6CEB9'
-  //   );
-  // }
-
   kMenu.classList.remove('show');
 });
 
