@@ -1,6 +1,6 @@
 export const TerminalApp = {
     title: 'Terminal', 
-    bgColor: '#000000',
+    contentBgColor: '#000000',
 
     render() {
         return `
