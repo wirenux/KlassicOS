@@ -27,6 +27,19 @@ export const BrowserApp = {
                 <button class="control-btn"><span class="icon control-print"></span></button>
                 <button class="control-btn"><span class="icon control-search"></span></button>
             </div>
+            <hr />
+            <div id="address-bar">
+                <p>Location:</p>
+                <input class="address-input" />
+            </div>
+            <div id="address-btn-bar">
+                <button class="address-btn">What's New ?</button>
+                <button class="address-btn">What's Cool ?</button>
+                <button class="address-btn">Destination</button>
+                <button class="address-btn">Net Search</button>
+                <button class="address-btn">People</button>
+                <button class="address-btn">Software</button>
+            </div>
         `;
     },
 

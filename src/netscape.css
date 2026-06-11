@@ -136,3 +136,69 @@ hr {
 .control-search {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'><path d='M6 2c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm3.3 4.7l4.4 4.4-1.4 1.4-4.4-4.4 1.4-1.4z' fill='black'/></svg>");
 }
+
+#address-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'W95F', sans-serif;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: never;
+    font-size: 16px;
+    color: black;
+}
+
+.address-input {
+    flex-grow: 1;
+    margin-left: 8px;
+    padding: 2px 4px;
+    
+    font-family: 'departureMono', monospace;
+    font-size: 12px;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: never;
+    
+    background-color: #FFFFFF;
+    color: black;
+    outline: none;
+    
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-bottom: 2px solid #FFFFFF;
+    border-right: 2px solid #FFFFFF;
+}
+
+#address-btn-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.address-btn {
+    font-family: 'W95F', sans-serif;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: never;
+    font-size: 14px;
+    color: black;
+    
+    background-color: #C8C8C8;
+    padding: 2px 8px;
+    cursor: pointer;
+    
+    border-top: 2px solid #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #7B776B;
+    border-bottom: 2px solid #7B776B;
+    outline: none;
+}
+
+.address-btn:active {
+    border-top: 2px solid #7B776B;
+    border-left: 2px solid #7B776B;
+    border-right: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    padding: 3px 7px 1px 9px;
+}
