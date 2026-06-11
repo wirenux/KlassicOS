@@ -163,8 +163,8 @@ html, body {
   font-smooth: never;
   font-size: 12px;
   height: 40px;
-  min-width: 120px;
-  max-width: 160px;
+  /* min-width: 120px; */
+  /* max-width: 160px; */
   padding: 0 8px;
   background-color: #D6CEB9;
   border-top: 3px solid #eaeaea;
@@ -189,7 +189,7 @@ html, body {
   border-right: 3px solid #eaeaea;
   font-weight: bold;
 
-  padding: 1px 7px 0 9px;
+  padding: 1px 9px 0 9px;
 }
 
 .kde-window {

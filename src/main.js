@@ -2,11 +2,13 @@ import './style.css'
 import { TerminalApp } from './apps/terminal.js';
 import { AboutApp } from './apps/about.js';
 import { EditorApp } from './apps/editor.js';
+import { BrowserApp } from './apps/netscape.js';
 
 const APP_REGISTRY = {
   terminal: TerminalApp,
   about: AboutApp,
   editor: EditorApp,
+  browser: BrowserApp,
 };
 
 document.querySelector('#app').innerHTML = `
@@ -22,6 +24,7 @@ document.querySelector('#app').innerHTML = `
       <div id="taskbar-apps"></div>
 
       <div id="k-menu">
+        <div class="k-menu-item" data-app="browser">Netscape Navigator</div>
         <div class="k-menu-item" data-app="terminal">Terminal</div>
         <div class="k-menu-item" data-app="editor">Text Editor</div>
         <div class="k-menu-separator"></div>

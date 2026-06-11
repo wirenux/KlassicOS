@@ -1,0 +1,60 @@
+@font-face {
+    font-family: "departureMono";
+    src: url('assets/fonts/DepartureMono-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "W95F";
+    src: url('assets/fonts/W95F.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+#option-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.option-bar-btn {
+    /* reset default browser button style */
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+
+    font-family: 'W95F';
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: never;
+    font-size: 16px;
+    color: black;
+    
+    display: inline-block;
+}
+
+.option-bar-btn:first-letter {
+    text-decoration: underline;
+}
+
+.option-bar-btn:hover {
+    color: #000080;
+}
+
+.option-bar-btn:active {
+    color: #ff0000;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #A6A6A6;
+    border-bottom: 2px solid #E9E9E9;
+}
