@@ -40,6 +40,7 @@ html, body {
   display: flex;
   align-items: center;
   padding: 0 5px;
+
 }
 
 #workspace {
@@ -146,6 +147,51 @@ html, body {
   border-right: 3px solid #eaeaea;
 }
 
+#taskbar-apps {
+  display: flex;
+  gap: 4px;
+  margin-left: 12px;
+  flex-grow: 1;
+  height: 100%;
+  align-items: center;
+}
+
+.taskbar-btn {
+  font-family: 'departureMono';
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+  font-size: 12px;
+  height: 40px;
+  min-width: 120px;
+  max-width: 160px;
+  padding: 0 8px;
+  background-color: #D6CEB9;
+  border-top: 3px solid #eaeaea;
+  border-left: 3px solid #eaeaea;
+  border-bottom: 3px solid #7b776b;
+  border-right: 3px solid #7b776b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+}
+
+.taskbar-btn.focused {
+  background-color: #cbbb9e;
+  border-top: 3px solid #7b776b;
+  border-left: 3px solid #7b776b;
+  border-bottom: 3px solid #eaeaea;
+  border-right: 3px solid #eaeaea;
+  font-weight: bold;
+
+  padding: 1px 7px 0 9px;
+}
+
 .kde-window {
   position: absolute;
   background-color: #D6CEB9;
@@ -160,6 +206,17 @@ html, body {
   border-bottom: 3px solid #7b776b;
   border-right: 3px solid #7b776b;
   box-sizing: border-box;
+}
+
+.kde-window.maximized {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.kde-window.minimized {
+  display: none !important;
 }
 
 .kde-titlebar {

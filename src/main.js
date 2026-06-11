@@ -6,8 +6,12 @@ document.querySelector('#app').innerHTML = `
 
     <div id="workspace"></div>
 
+
     <div id="taskbar">
       <button id="k-menu-btn">K</button>
+
+      <div id="taskbar-apps"></div>
+
       <div id="k-menu">
         <div class="k-menu-item" data-app="terminal">Terminal</div>
         <div class="k-menu-item" data-app="editor">Text Editor</div>
@@ -38,9 +42,14 @@ function updateClock() {
 }
 
 function spawnWindow(title, contentHTML, contentBgColor = '#ffffff') {
-  const desktop = document.getElementById('workspace');
+  const workspace = document.getElementById('workspace');
+  const taskbarApps = document.getElementById('taskbar-apps');
+
+  const windowId = 'win-' + Math.random().toString(36).substr(2, 9);
+
   const windowEl = document.createElement('div');
   windowEl.className = 'kde-window';
+  windowEl.dataset.id = windowId;
 
   topZIndex++;
   windowEl.style.zIndex = topZIndex;
@@ -59,18 +68,59 @@ function spawnWindow(title, contentHTML, contentBgColor = '#ffffff') {
     </div>
   `;
 
-  windowEl.addEventListener('mousedown', () => {
+  const taskBtn = document.createElement('button');
+  taskBtn.className = 'taskbar-btn';
+  taskBtn.id = `btn-${windowId}`;
+  taskBtn.textContent = title;
+  taskbarApps.appendChild(taskBtn);
+
+  function focusWindow() {
+    document.querySelectorAll('.taskbar-btn').forEach(b => b.classList.remove('focused'));
+    taskBtn.classList.add('focused');
+
+    if (windowEl.classList.contains('minimized')) {
+      windowEl.classList.remove('minimized');
+    }
+
     topZIndex++;
     windowEl.style.zIndex = topZIndex;
-  })
+  }
+
+  windowEl.addEventListener('mousedown', focusWindow);
+
+  taskBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isMinimized = windowEl.classList.contains('minimized');
+    const isTop = windowEl.style.zIndex == topZIndex;
+
+    if (!isMinimized && isTop) {
+      windowEl.classList.add('minimized');
+      taskBtn.classList.remove('focused');
+    } else {
+      focusWindow();
+    }
+  });
+
+  windowEl.querySelector('.min-btn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    windowEl.classList.add('minimized');
+    taskBtn.classList.remove('focused');
+  });
+
+  windowEl.querySelector('.max-btn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    windowEl.classList.toggle('maximized');
+    focusWindow();
+  });
 
   windowEl.querySelector('.close-btn').addEventListener('click', (e) => {
     e.stopPropagation();
     windowEl.remove();
+    taskBtn.remove();
   });
 
-  const titlebar = windowEl.querySelector('.kde-titlebar');
 
+  const titlebar = windowEl.querySelector('.kde-titlebar');
   titlebar.addEventListener('mousedown', (e) => {
     if (e.target.closest('.win-btn')) {
       return;
@@ -113,10 +163,13 @@ function spawnWindow(title, contentHTML, contentBgColor = '#ffffff') {
     document.addEventListener('mouseup', onMouseUp);
   });
 
-  windowEl.style.top = '20px';
-  windowEl.style.left = '20px';
+  const openWindowsCount = workspace.querySelectorAll('.kde-window').length;
+  windowEl.style.top = `${20 + (openWindowsCount * 25)}px`;
+  windowEl.style.left = `${20 + (openWindowsCount * 25)}px`;
 
-  desktop.appendChild(windowEl);
+  workspace.appendChild(windowEl);
+  focusWindow();
+  return windowEl;
 }
 
 const kMenuBtn = document.getElementById('k-menu-btn');
