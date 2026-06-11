@@ -17,21 +17,34 @@ export const BrowserApp = {
                 <button class="option-bar-btn">Window</button>
                 <button class="option-bar-btn">Help</button>
             </div>
-            <hr />
-            <div id="control-bar">
-                <button class="control-btn"><span class="icon control-back-arrow"></span></button>
-                <button class="control-btn"><span class="icon control-front-arrow"></span></button>
-                <button class="control-btn"><span class="icon control-home"></span></button>
 
-                <button class="control-btn"><span class="icon control-refresh"></span></button>
-                <button class="control-btn"><span class="icon control-print"></span></button>
-                <button class="control-btn"><span class="icon control-search"></span></button>
-            </div>
             <hr />
-            <div id="address-bar">
-                <p>Location:</p>
-                <input class="address-input" />
+            
+            <div class="toolbar-wrapper">
+                <div class="toolbar-left-column">
+                    <div id="control-bar">
+                        <button class="control-btn"><span class="icon control-back-arrow"></span></button>
+                        <button class="control-btn"><span class="icon control-front-arrow"></span></button>
+                        <button class="control-btn"><span class="icon control-home"></span></button>
+                        <button class="control-btn"><span class="icon control-refresh"></span></button>
+                        <button class="control-btn"><span class="icon control-print"></span></button>
+                        <button class="control-btn"><span class="icon control-search"></span></button>
+                    </div>
+                    <hr class="toolbar-divider" />
+                    <div id="address-bar">
+                        <p>Location:</p>
+                        <div class="address-input-container">
+                            <input class="address-input" />
+                            <button class="address-drop-btn"></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="toolbar-right-column">
+                    <button class="netscape-throbber"></button>
+                </div>
             </div>
+
             <div id="address-btn-bar">
                 <button class="address-btn">What's New ?</button>
                 <button class="address-btn">What's Cool ?</button>

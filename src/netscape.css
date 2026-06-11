@@ -149,25 +149,56 @@ hr {
     color: black;
 }
 
-.address-input {
+.address-input-container {
     flex-grow: 1;
     margin-left: 8px;
+    display: flex;
+    background-color: #FFFFFF;
+    
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-bottom: 2px solid #FFFFFF;
+    border-right: 2px solid #FFFFFF;
+}
+
+.address-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
     padding: 2px 4px;
+    background: transparent;
     
     font-family: 'departureMono', monospace;
     font-size: 12px;
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
     font-smooth: never;
-    
-    background-color: #FFFFFF;
-    color: black;
+}
+
+.address-drop-btn {
+    width: 16px;
+    background-color: #C8C8C8;
+    cursor: pointer;
     outline: none;
+    padding: 0;
     
-    border-top: 2px solid #808080;
-    border-left: 2px solid #808080;
-    border-bottom: 2px solid #FFFFFF;
+    border-top: 2px solid #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #7B776B;
+    border-bottom: 2px solid #7B776B;
+    
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16' shape-rendering='crispEdges'><polygon points='4,6 12,6 8,10' fill='black'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.address-drop-btn:active {
+    border-top: 2px solid #7B776B;
+    border-left: 2px solid #7B776B;
     border-right: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    background-position: calc(50% + 1px) calc(50% + 1px);
 }
 
 #address-btn-bar {
@@ -201,4 +232,57 @@ hr {
     border-right: 2px solid #FFFFFF;
     border-bottom: 2px solid #FFFFFF;
     padding: 3px 7px 1px 9px;
+}
+
+.toolbar-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    background-color: #C8C8C8;
+    width: 100%;
+}
+
+.toolbar-left-column {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.toolbar-right-column {
+    display: flex;
+    align-items: flex-start;
+    padding-left: 6px;
+    padding-top: 2px;
+}
+
+.toolbar-divider {
+    margin: 2px 0;
+}
+
+.netscape-throbber {
+    width: 82px;
+    height: 82px;
+    background-color: #000000;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    box-sizing: border-box;
+    
+    background-image: url('./assets/Netscape_icon.svg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    border-top: 2px solid #7B776B;
+    border-left: 2px solid #7B776B;
+    border-right: 2px solid #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+}
+
+.netscape-throbber:active {
+    border-top: 2px solid #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #7B776B;
+    border-bottom: 2px solid #7B776B;
 }
