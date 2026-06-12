@@ -74,6 +74,7 @@ M  MMMMM  M 88'  \`88  \`8bd8\'
 M  MMMMM  M 88.  .88  .d88b.
 M  MMMMM  M \`88888P\' dP'  \`dP
 MMMMMMMMMMM
+https://github.com/wirenux/nox (˶ᵔ ᵕ ᵔ˶)
 
 Host: Nox Kernel x86_64 v1.0
 Uptime: XX minutes

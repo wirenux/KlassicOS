@@ -4,4 +4,4 @@ A webOS who look like **KDE 1.0**
 
 TODO:
 
-* Terminal look like Konsole
+* replace every ?.? or X.X version with real number
