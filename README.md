@@ -6,7 +6,10 @@ KlassicOS is build with HTML, CSS, and vanilla JavaScript.
 
 KlassicOS brings back the retro aesthetic of late-90s Linux environments into a browser.
 
-![KlassicOS](./src/assets/readme/screenshot1.png)
+![KlassicOS](./src/assets/readme/main.png)
+![KlassicOS](./src/assets/readme/general.png)
+![KlassicOS](./src/assets/readme/icons.png)
+![KlassicOS](./src/assets/readme/menu.png)
 
 ## ⭐ Features
 
