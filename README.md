@@ -49,7 +49,9 @@ npm run dev
 pnpm dev
 ```
  
+## 🧠 Use of AI
 
+* Gemini: Brainstorming + README.md skeleton
 
 ## 💼 Legal
 
