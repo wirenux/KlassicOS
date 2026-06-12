@@ -6,6 +6,7 @@ export const BrowserApp = {
 
     render() {
         return `
+            <div class="netscape-app-container">
             <div id="option-bar">
                 <button class="option-bar-btn">File</button>
                 <button class="option-bar-btn">Edit</button>
@@ -57,6 +58,7 @@ export const BrowserApp = {
             <div class="browser-viewport">
                 <iframe src="about:blank" class="browser-iframe"></iframe>
             </div>
+        </div>
         `;
     },
 
@@ -67,37 +69,26 @@ export const BrowserApp = {
         const refreshBtn = windowEl.querySelector('.control-refresh');
 
         function navigateTo(url) {
-            if (!url.trim()) {
-                return;
-            }
-
+            if (!url.trim()) return;
             let targetUrl = url.trim();
             if (!/^https?:\/\//i.test(targetUrl)) {
                 targetUrl = 'https://' + targetUrl;
             }
-
             const iframeProxy = "https://corsproxy.io/?url=";
-
             iframe.src = iframeProxy + encodeURIComponent(targetUrl);
             addressInput.value = targetUrl;
         }
 
         addressInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                navigateTo(addressInput.value);
-            }
+            if (e.key === 'Enter') navigateTo(addressInput.value);
         });
 
         if (homeBtn) {
-            homeBtn.addEventListener('click', () => {
-                navigateTo('duckduckgo.com');
-            })
+            homeBtn.addEventListener('click', () => navigateTo('duckduckgo.com'));
         }
 
         if (refreshBtn) {
-            refreshBtn.addEventListener('click', () => {
-                iframe.src = iframe.src;
-            })
+            refreshBtn.addEventListener('click', () => { iframe.src = iframe.src; });
         }
     }
 }

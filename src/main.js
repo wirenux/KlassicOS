@@ -13,15 +13,14 @@ const APP_REGISTRY = {
 
 document.querySelector('#app').innerHTML = `
   <div id="desktop">
-    <div id="topbar"></div>
+    <div id="topbar">
+      <div id="taskbar-apps"></div>
+    </div>
 
     <div id="workspace"></div>
 
-
     <div id="taskbar">
       <button id="k-menu-btn">K</button>
-
-      <div id="taskbar-apps"></div>
 
       <div id="k-menu">
         <div class="k-menu-item" data-app="browser">Netscape Navigator</div>
@@ -78,6 +77,7 @@ function spawnWindow(appConfig) {
     <div class="kde-window-content" style="background-color: ${appConfig.contentBgColor || '#ffffff'};">
       ${appConfig.render()}
     </div>
+    <div class="win-resize-handle"></div>
   `;
 
   const taskBtn = document.createElement('button');
@@ -134,7 +134,7 @@ function spawnWindow(appConfig) {
 
   const titlebar = windowEl.querySelector('.kde-titlebar');
   titlebar.addEventListener('mousedown', (e) => {
-    if (e.target.closest('.win-btn')) {
+    if (e.target.closest('.win-btn') || windowEl.classList.contains('maximized')) {
       return;
     }
 
@@ -164,6 +164,41 @@ function spawnWindow(appConfig) {
 
       windowEl.style.left = `${newLeft}px`;
       windowEl.style.top = `${newTop}px`;
+    }
+
+    function onMouseUp() {
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  });
+
+  const resizeHandle = windowEl.querySelector('.win-resize-handle');
+  resizeHandle.addEventListener('mousedown', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    
+    if (windowEl.classList.contains('maximized')) {
+      return;
+    }
+
+    const startX = e.clientX
+    const startY = e.clientY
+
+    const startWidth = windowEl.offsetWidth
+    const startHeight = windowEl.offsetHeight
+
+    function onMouseMove(moveEvent) {
+      const deltaX = moveEvent.clientX - startX;
+      const deltaY = moveEvent.clientY - startY;
+
+      const newWidth = Math.max(250, startWidth + deltaX);
+      const newHeight = Math.max(150, startHeight + deltaY);
+
+      windowEl.style.width = `${newWidth}px`;
+      windowEl.style.height = `${newHeight}px`;
     }
 
     function onMouseUp() {

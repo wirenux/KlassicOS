@@ -195,8 +195,10 @@ html, body {
 .kde-window {
   position: absolute;
   background-color: #D6CEB9;
-  min-width: 500px;
-  min-height: 300px;
+  width: 400px;
+  height: 300px;
+  min-width: 250px;
+  min-height: 150px;
   display: flex;
   flex-direction: column;
   padding: 3px;
@@ -285,6 +287,77 @@ html, body {
   padding: 10px;
   margin-top: 3px;
   overflow: auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.win-resize-handle {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 16px;
+  height: 16px;
+
+  cursor: se-resize;
+  z-index: 9999;
+}
+
+.win-resize-handle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: rotate(180deg);
+  transform-origin: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 7px,
+      #fff 7px,
+      #fff 8px,
+      transparent 8px,
+      transparent 11px,
+      #fff 11px,
+      #fff 12px,
+      transparent 12px
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 8px,
+      #808080 8px,
+      #808080 9px,
+      transparent 9px,
+      transparent 12px,
+      #808080 12px,
+      #808080 13px,
+      transparent 13px
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 3px,
+      #fff 3px,
+      #fff 4px,
+      transparent 4px,
+      transparent 7px,
+      #fff 7px,
+      #fff 8px,
+      transparent 8px
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 4px,
+      #808080 4px,
+      #808080 5px,
+      transparent 5px,
+      transparent 8px,
+      #808080 8px,
+      #808080 9px,
+      transparent 9px
+    );
 }
 
 #clock-widget {
