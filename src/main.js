@@ -44,8 +44,8 @@ document.querySelector('#app').innerHTML = `
 
       <div id="k-menu">
         <div class="k-menu-item" data-app="browser">Netscape Navigator</div>
-        <div class="k-menu-item" data-app="terminal">Terminal</div>
-        <div class="k-menu-item" data-app="editor">Text Editor</div>
+        <div class="k-menu-item" data-app="terminal">Konsole</div>
+        <div class="k-menu-item" data-app="editor">KWrite</div>
         <div class="k-menu-separator"></div>
         <div class="k-menu-item" data-app="about">System Info</div>
       </div>
