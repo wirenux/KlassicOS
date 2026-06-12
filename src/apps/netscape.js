@@ -24,10 +24,10 @@ export const BrowserApp = {
             <div class="toolbar-wrapper">
                 <div class="toolbar-left-column">
                     <div id="control-bar">
-                        <button class="control-btn"><span class="icon control-back-arrow"></span></button>
-                        <button class="control-btn"><span class="icon control-front-arrow"></span></button>
-                        <button class="control-btn"><span class="icon control-home"></span></button>
-                        <button class="control-btn"><span class="icon control-refresh"></span></button>
+                        <button class="control-btn btn-back"><span class="icon control-back-arrow"></span></button>
+                        <button class="control-btn btn-forward"><span class="icon control-front-arrow"></span></button>
+                        <button class="control-btn btn-home"><span class="icon control-home"></span></button>
+                        <button class="control-btn btn-refresh"><span class="icon control-refresh"></span></button>
                         <button class="control-btn"><span class="icon control-print"></span></button>
                         <button class="control-btn"><span class="icon control-search"></span></button>
                     </div>
@@ -65,19 +65,42 @@ export const BrowserApp = {
     init(windowEl) {
         const addressInput = windowEl.querySelector('.address-input');
         const iframe = windowEl.querySelector('.browser-iframe');
-        const homeBtn = windowEl.querySelector('.control-home');
-        const refreshBtn = windowEl.querySelector('.control-refresh');
+        
+        const backBtn = windowEl.querySelector('.btn-back');
+        const forwardBtn = windowEl.querySelector('.btn-forward');
+        const homeBtn = windowEl.querySelector('.btn-home');
+        const refreshBtn = windowEl.querySelector('.btn-refresh');
+
+        const titlebarText = windowEl.querySelector('.titlebar-title');
 
         function navigateTo(url) {
             if (!url.trim()) return;
             let targetUrl = url.trim();
-            if (!/^https?:\/\//i.test(targetUrl)) {
+            if (!/^https?:\/\//i.test(targetUrl) && !targetUrl.startsWith('./') && !targetUrl.startsWith('about:')) {
                 targetUrl = 'https://' + targetUrl;
             }
 
             iframe.src = targetUrl;
             addressInput.value = targetUrl;
+
+            if (titlebarText) {
+                titlebarText.textContent = `Netscape - [${targetUrl}]`;
+            }
         }
+
+        iframe.addEventListener('load', () => {
+            try {
+                const currentIframeUrl = iframe.contentWindow.location.href;
+                if (currentIframeUrl && currentIframeUrl !== 'about:blank') {
+                    addressInput.value = currentIframeUrl;
+                    if (titlebarText) {
+                        titlebarText.textContent = `Netscape - [${currentIframeUrl}]`;
+                    }
+                }
+            } catch (securityError) {
+                console.warn("Cross-origin navigation restriction: Can't read internal iframe deep links");
+            }
+        })
 
         addressInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') navigateTo(addressInput.value);
@@ -90,5 +113,27 @@ export const BrowserApp = {
         if (refreshBtn) {
             refreshBtn.addEventListener('click', () => { iframe.src = iframe.src; });
         }
+
+        if (backBtn) {
+            backBtn.addEventListener('click', () => {
+                try {
+                    iframe.contentWindow.history.back();
+                } catch (e) {
+                    console.error("Cannot toggle history on cross-origin assets.");
+                }
+            })
+        }
+
+        if (forwardBtn) {
+            forwardBtn.addEventListener('click', () => {
+                try {
+                    iframe.contentWindow.history.forward();
+                } catch (e) {
+                    console.error("Cannot toggle history on cross-origin assets.");
+                }
+            })
+        }
+
+        navigateTo('wirenux.github.io/blog');
     }
 }
