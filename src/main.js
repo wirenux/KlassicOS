@@ -1,4 +1,5 @@
 import './style.css'
+import kLogo from './assets/klogo-classic.svg';
 import { TerminalApp } from './apps/terminal.js';
 import { AboutApp } from './apps/about.js';
 import { EditorApp } from './apps/editor.js';
@@ -40,7 +41,9 @@ document.querySelector('#app').innerHTML = `
     </div>
 
     <div id="taskbar">
-      <button id="k-menu-btn">K</button>
+      <button id="k-menu-btn" aria-label="Start Menu">
+        <img class="k-menu-icon" src="${kLogo}" alt="K Menu" />
+      </button>
 
       <div id="k-menu">
         <div class="k-menu-item" data-app="browser">Netscape Navigator</div>

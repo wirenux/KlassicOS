@@ -146,6 +146,11 @@ html, body {
   border-right: 3px solid #7b776b;
   cursor: pointer;
   outline: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
 }
 
 #k-menu-btn:active {
@@ -153,6 +158,18 @@ html, body {
   border-left: 3px solid #7b776b;
   border-bottom: 3px solid #eaeaea;
   border-right: 3px solid #eaeaea;
+
+  padding: 2px 0 0 2px;
+}
+
+.k-menu-icon {
+  width: 24px;
+  height: 24px;
+
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  pointer-events: none;
 }
 
 #taskbar-apps {
