@@ -1,7 +1,7 @@
 import '../netscape.css'
 
 export const BrowserApp = {
-    title: 'Netscape - [Version X.0-XXXXX]', 
+    title: 'Netscape Navigator', 
     contentBgColor: '#C8C8C8',
 
     render() {
