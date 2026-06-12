@@ -84,7 +84,7 @@ export const BrowserApp = {
         });
 
         if (homeBtn) {
-            homeBtn.addEventListener('click', () => navigateTo('duckduckgo.com'));
+            homeBtn.addEventListener('click', () => navigateTo('wirenux.github.io/blog'));
         }
 
         if (refreshBtn) {
