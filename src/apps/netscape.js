@@ -74,8 +74,8 @@ export const BrowserApp = {
             if (!/^https?:\/\//i.test(targetUrl)) {
                 targetUrl = 'https://' + targetUrl;
             }
-            const iframeProxy = "https://corsproxy.io/?url=";
-            iframe.src = iframeProxy + encodeURIComponent(targetUrl);
+
+            iframe.src = targetUrl;
             addressInput.value = targetUrl;
         }
 
