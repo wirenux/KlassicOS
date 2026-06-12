@@ -17,7 +17,27 @@ document.querySelector('#app').innerHTML = `
       <div id="taskbar-apps"></div>
     </div>
 
-    <div id="workspace"></div>
+    <div id="workspace">
+      <div class="desktop-shortcut" data-app="browser">
+        <div class="shortcut-icon icon-browser"></div>
+        <div class="shortcut-label">Netscape Navigator</div>
+      </div>
+
+      <div class="desktop-shortcut" data-app="terminal">
+        <div class="shortcut-icon icon-terminal"></div>
+        <div class="shortcut-label">Konsole</div>
+      </div>
+
+      <div class="desktop-shortcut" data-app="editor">
+        <div class="shortcut-icon icon-editor"></div>
+        <div class="shortcut-label">KWrite</div>
+      </div>
+
+      <div class="desktop-shortcut" data-app="about">
+        <div class="shortcut-icon icon-about"></div>
+        <div class="shortcut-label">System Info</div>
+      </div>
+    </div>
 
     <div id="taskbar">
       <button id="k-menu-btn">K</button>
@@ -248,6 +268,24 @@ kMenu.addEventListener('click', (e) => {
   }
 
   kMenu.classList.remove('show');
+});
+
+
+const workspace = document.getElementById('workspace');
+workspace.addEventListener('dblclick', (e) => {
+  const shortcut = e.target.closest('.desktop-shortcut');
+  
+  if (!shortcut) {
+    return;
+  }
+
+  const appType = shortcut.dataset.app;
+  const selectedApp = APP_REGISTRY[appType];
+
+  if (selectedApp) {
+    spawnWindow(selectedApp);
+  }
+
 });
 
 updateClock();

@@ -49,6 +49,14 @@ html, body {
   bottom: 64px;
   left: 0;
   right: 0;
+  
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
   overflow: hidden;
   z-index: 10;
   background: linear-gradient(180deg, rgba(6, 183, 169, 1) 0%, rgba(0, 170, 159, 1) 45%, rgba(0, 150, 141, 1) 65%, rgba(0, 131, 130, 1) 100%);
@@ -358,6 +366,63 @@ html, body {
       #808080 9px,
       transparent 9px
     );
+}
+
+
+.desktop-shortcut {
+  width: 76px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.desktop-shortcut:active .shortcut-label {
+  background-color: #000000;
+  color: #ffffff;
+  outline: 1px dotted #ffffff;
+}
+
+.shortcut-icon {
+  width: 52px;
+  height: 52px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 4px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.shortcut-label {
+  font-family: 'W95F', sans-serif;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 2px 4px;
+  word-break: break-word;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.icon-browser {
+    background-image: url('./assets/Netscape_icon.svg');
+}
+
+.icon-terminal {
+    background-image: url('./assets/Konsole_icon.svg');
+}
+
+.icon-editor {
+    background-image: url('./assets/KWrite_icon.svg');
+}
+
+.icon-about {
+    background-image: url('./assets/KControl_icon.svg');
 }
 
 #clock-widget {
