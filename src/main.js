@@ -105,7 +105,7 @@ async function runBiosBoot() {
       const ramSpan = document.getElementById('bios-ram');
       for (let currentRam = 0; currentRam <= 65536; currentRam += 4096) {
         ramSpan.textContent = `${currentRam}KB OK`;
-        await new Promise(res => setTimeout(res, 30)); 
+        await new Promise(res => setTimeout(res, 30));
       }
     } else {
       await new Promise(res => setTimeout(res, line.delay));
