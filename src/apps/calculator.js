@@ -1,6 +1,8 @@
 export const CalculatorApp = {
     title: 'KCalc',
     contentBgColor: '#D6CEB9',
+    width: '270px',
+    height: '280px',
 
     render() {
         return `

@@ -1,17 +1,19 @@
 import kLogo from '../assets/klogo-classic.svg';
 
 export const AboutApp = {
-    title: 'System Info', 
+    title: 'System Info',
     contentBgColor: '#D6CEB9',
+    width: '400px',
+    height: '330px',
 
     render() {
         return `
             <div style="font-family: 'departureMono'; font-size: 13px; color: #000; padding: 4px; display: flex; flex-direction: column; gap: 12px;">
-                
+
                 <div style="display: flex; gap: 16px; align-items: center;">
-                    <img 
-                        src="${kLogo}" 
-                        alt="KDE Logo" 
+                    <img
+                        src="${kLogo}"
+                        alt="KDE Logo"
                         style="width: 48px; height: 48px; display: block; image-rendering: pixelated; image-rendering: crisp-edges; user-select: none;" 
                         draggable="false"
                     />
@@ -55,5 +57,4 @@ export const AboutApp = {
     init(windowEl) {
         // static app
     }
-      
 }

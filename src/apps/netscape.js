@@ -1,8 +1,10 @@
 import '../netscape.css'
 
 export const BrowserApp = {
-    title: 'Netscape Navigator', 
+    title: 'Netscape Navigator',
     contentBgColor: '#C8C8C8',
+    width: '1000px',
+    height: '700px',
 
     render() {
         return `

@@ -240,6 +240,9 @@ function spawnWindow(appConfig) {
   windowEl.style.top = `${20 + (openWindowsCount * 25)}px`;
   windowEl.style.left = `${20 + (openWindowsCount * 25)}px`;
 
+  windowEl.style.width = appConfig.width || '400px';
+  windowEl.style.height = appConfig.height || '300px';
+
   workspace.appendChild(windowEl);
   focusWindow();
 
