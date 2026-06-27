@@ -6,6 +6,12 @@ KlassicOS is build with `HTML`, `CSS`, and **vanilla** `JavaScript`.
 
 KlassicOS use the retro aesthetic of late-90s Linux environments.
 
+
+
+https://github.com/user-attachments/assets/adbd79c2-3965-4952-8ca9-e7f48b7d5899
+
+
+
 ![](./src/assets/readme/main.png)
 
 ![](./src/assets/readme/icons.png)
