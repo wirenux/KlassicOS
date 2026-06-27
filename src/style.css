@@ -446,6 +446,10 @@ html, body {
     background-image: url('./assets/KWrite_icon.svg');
 }
 
+.icon-calculator {
+  background-image: url('./assets/KCalc_icon.svg');
+}
+
 .icon-about {
     background-image: url('./assets/KControl_icon.svg');
 }

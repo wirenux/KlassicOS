@@ -36,6 +36,11 @@ document.querySelector('#app').innerHTML = `
         <div class="shortcut-label">KWrite</div>
       </div>
 
+      <div class="desktop-shortcut" data-app="calculator">
+        <div class="shortcut-icon icon-calculator"></div>
+        <div class="shortcut-label">KCalc</div>
+      </div>
+
       <div class="desktop-shortcut" data-app="about">
         <div class="shortcut-icon icon-about"></div>
         <div class="shortcut-label">System Info</div>
