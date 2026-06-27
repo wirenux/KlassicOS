@@ -15,6 +15,11 @@ const APP_REGISTRY = {
 };
 
 document.querySelector('#app').innerHTML = `
+  <div id="bios-screen">
+    <div id="bios-content"></div>
+    <span class="bios-cursor"></span>
+  </div>
+
   <div id="desktop">
     <div id="topbar">
       <div id="taskbar-apps"></div>
@@ -67,6 +72,48 @@ document.querySelector('#app').innerHTML = `
     </div>
   </div>
 `
+
+async function runBiosBoot() {
+  const container = document.getElementById('bios-content');
+  const biosScreen = document.getElementById('bios-screen');
+
+  const lines = [
+    { text: "AMIBIOS (C) 1998 American Megatrends, Inc.", delay: 400 },
+    { text: "KDE-OS V1.00 Release E8.21.0X", delay: 300 },
+    { text: "CPU: Retro-Processor core running at 233 MHz", delay: 500 },
+    { text: "------------------------------------------------", delay: 100 },
+    { text: "Checking RAM : <span id='bios-ram'>0KB</span>", delay: 0, isRam: true },
+    { text: "Keyboard..... Detected <span class='bios-green'>[OK]</span>", delay: 400 },
+    { text: "Mouse........ Detected <span class='bios-green'>[OK]</span>", delay: 300 },
+    { text: "Detecting Primary Master ... IDE Hard Disk 2.1GB", delay: 600 },
+    { text: "Detecting Secondary Master . CD-ROM Drive", delay: 400 },
+    { text: "Loading Kernel Modules ..................... Done", delay: 500 },
+    { text: "Starting Graphical Environment...", delay: 600 }
+  ];
+
+  for (const line of lines) {
+    const div = document.createElement('div');
+    div.innerHTML = line.text;
+    container.appendChild(div);
+
+    if (line.isRam) {
+      const ramSpan = document.getElementById('bios-ram');
+      for (let currentRam = 0; currentRam <= 65536; currentRam += 4096) {
+        ramSpan.textContent = `${currentRam}KB OK`;
+        await new Promise(res => setTimeout(res, 30)); 
+      }
+    } else {
+      await new Promise(res => setTimeout(res, line.delay));
+    }
+  }
+
+  await new Promise(res => setTimeout(res, 600));
+  biosScreen.classList.add('fade-out');
+
+  setTimeout(() => biosScreen.remove(), 500);
+}
+
+runBiosBoot();
 
 let topZIndex = 10;
 
