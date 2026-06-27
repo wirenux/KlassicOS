@@ -581,6 +581,35 @@ html, body {
   line-height: 1.4;
 }
 
+#bios-logo {
+  position: absolute;
+  top: 0px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #55ff55;
+  font-family: 'departureMono', monospace;
+  font-size: 11px;
+  line-height: 1.2;
+  user-select: none;
+}
+
+#bios-logo svg {
+  margin-bottom: 4px;
+  shape-rendering: crispEdges;
+}
+
+.epa-text {
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+  border-top: 1px solid #55ff55;
+  padding-top: 3px;
+  width: 100%;
+}
+
 .bios-red {
   color: #ff5555;
   font-weight: bold;

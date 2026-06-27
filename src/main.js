@@ -1,5 +1,6 @@
 import './style.css'
 import kLogo from './assets/klogo-classic.svg';
+import energyLogo from './assets/Energy_Star_logo.svg'
 import { TerminalApp } from './apps/terminal.js';
 import { AboutApp } from './apps/about.js';
 import { EditorApp } from './apps/editor.js';
@@ -16,6 +17,10 @@ const APP_REGISTRY = {
 
 document.querySelector('#app').innerHTML = `
   <div id="bios-screen">
+    <div id="bios-logo">
+      <img src="${energyLogo}" height=256px/>
+      <div class="epa-text">EPA POLLUTION PREVENTER</div>
+    </div>
     <div id="bios-content"></div>
     <span class="bios-cursor"></span>
   </div>
