@@ -284,7 +284,6 @@ kMenu.addEventListener('click', (e) => {
   kMenu.classList.remove('show');
 });
 
-
 const workspace = document.getElementById('workspace');
 workspace.addEventListener('dblclick', (e) => {
   const shortcut = e.target.closest('.desktop-shortcut');
@@ -300,6 +299,79 @@ workspace.addEventListener('dblclick', (e) => {
     spawnWindow(selectedApp);
   }
 
+});
+
+const contextMenu = document.createElement('div');
+contextMenu.id = 'desktop-context-menu';
+document.body.appendChild(contextMenu);
+
+const workspaceEl = document.getElementById('workspace');
+
+workspaceEl.addEventListener('contextmenu', (e) => {
+  if (e.target !== workspaceEl) {
+    return;
+  }
+  e.preventDefault();
+
+  contextMenu.innerHTML = `
+    <div class="menu-section-title">Applications</div>
+    <div class="context-item" data-action="launch" data-app="browser">Netscape Navigator</div>
+    <div class="context-item" data-action="launch" data-app="terminal">Konsole</div>
+    <div class="context-item" data-action="launch" data-app="editor">KWrite</div>
+    <div class="context-item" data-action="launch" data-app="calculator">KCalc</div>
+
+    <div class="context-separator"></div>
+
+    <div class="menu-section-title">Workspace View</div>
+
+    <div class="context-item" data-action="toggle-view" data-target="hide-icons">Hide/Show Icons</div>
+
+    <div class="context-item" data-action="toggle-view" data-target="compact-grid">Toggle Compact Icon Spacing</div>
+
+    <div class="context-separator"></div>
+
+    <div class="menu-section-title">Color Themes</div>
+    <div class="context-item" data-action="wallpaper" data-color="linear-gradient(180deg, rgba(6, 183, 169, 1) 0%, rgba(0, 170, 159, 1) 45%, rgba(0, 150, 141, 1) 65%, rgba(0, 131, 130, 1) 100%)">KDE Classic Teal</div>
+    <div class="context-item" data-action="wallpaper" data-color="linear-gradient(0deg,rgba(128, 0, 0, 1) 15%, rgba(204, 155, 155, 1) 100%)">Retro Maroon</div>
+    <div class="context-item" data-action="wallpaper" data-color="linear-gradient(0deg,rgba(74, 89, 99, 1) 0%, rgba(138, 152, 166, 1) 100%)">Linux Slate Gray</div>
+  `;
+
+  contextMenu.style.top = `${e.clientY}px`;
+  contextMenu.style.left = `${e.clientX}px`;
+  contextMenu.classList.add('show');
+});
+
+contextMenu.addEventListener('click', (e) => {
+  const item = e.target.closest('.context-item');
+
+  if (!item) {
+    return;
+  }
+
+  const action = item.dataset.action;
+
+  if (action === 'launch') {
+    const appType = item.dataset.app;
+    const selectedApp = APP_REGISTRY[appType];
+    if (selectedApp) spawnWindow(selectedApp);
+  }
+
+  if (action === 'toggle-view') {
+    const className = item.dataset.target;
+    workspaceEl.classList.toggle(className);
+  }
+
+  if (action === 'wallpaper') {
+    workspaceEl.style.background = item.dataset.color;
+  }
+
+  contextMenu.classList.remove('show');
+});
+
+document.addEventListener('click', (e) => {
+  if (!contextMenu.contains(e.target)) {
+    contextMenu.classList.remove('show');
+  }
 });
 
 updateClock();

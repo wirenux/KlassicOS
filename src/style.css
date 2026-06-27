@@ -485,3 +485,81 @@ html, body {
   font-weight: 700;
   letter-spacing: -1px;
 }
+
+#desktop-context-menu {
+  display: none;
+  position: absolute;
+  background-color: #D6CEB9;
+  z-index: 999999;
+  width: 200px;
+  padding: 3px;
+
+  border-top: 2px solid #eaeaea;
+  border-left: 2px solid #eaeaea;
+  border-bottom: 2px solid #7b776b;
+  border-right: 2px solid #7b776b;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+#desktop-context-menu.show {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.menu-section-title {
+  font-family: 'departureMono', monospace;
+  font-size: 11px;
+  font-weight: bold;
+  color: #555555;
+  padding: 6px 12px 2px 12px;
+  user-select: none;
+}
+
+.context-item {
+  font-family: 'departureMono', monospace;
+  font-size: 12px;
+  color: #000000;
+  padding: 6px 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.context-item:hover {
+  background-color: #000080;
+  color: #ffffff;
+}
+
+.context-separator {
+  height: 2px;
+  background-color: #7b776b;
+  border-bottom: 1px solid #eaeaea;
+  margin: 4px 2px;
+}
+
+#workspace.hide-icons .desktop-shortcut {
+  display: none !important;
+}
+
+#workspace.compact-grid {
+  padding: 10px !important;
+  gap: 12px !important;
+}
+
+#workspace.compact-grid .desktop-shortcut {
+  width: 70px !important;
+  height: 70px !important;
+  padding: 4px !important;
+}
+
+#workspace.compact-grid .shortcut-icon {
+  width: 24px !important;
+  height: 24px !important;
+  background-size: contain !important;
+}
+
+#workspace.compact-grid .shortcut-label {
+  font-size: 11px !important;
+  margin-top: 2px !important;
+  line-height: 1.1 !important;
+}
