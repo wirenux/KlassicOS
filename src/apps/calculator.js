@@ -6,7 +6,7 @@ export const CalculatorApp = {
 
     render() {
         return `
-            <div class="kcalc-container" style="font-family: 'W95F'; padding: 6px; width: 220px; user-select: none;">
+            <div class="kcalc-container" style="font-family: 'W95F'; padding: 6px; width: 100%; box-sizing: border-box; user-select: none;">
                 <div class="kcalc-screen" style="
                     background: #fff;
                     border-top: 2px solid #7b776b;
@@ -15,7 +15,7 @@ export const CalculatorApp = {
                     border-right: 2px solid #eaeaea;
                     padding: 4px 8px;
                     text-align: right;
-                    font-family: 'departureMono';
+                    font-family: 'W95F';
                     font-size: 16px;
                     font-weight: bold;
                     margin-bottom: 8px;
@@ -24,30 +24,30 @@ export const CalculatorApp = {
                 ">0</div>
 
                 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;">
-                    <button class="calc-btn btn-clear" style="grid-column: span 2; background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-weight: bold; font-size: 12px;">C</button>
+                    <button class="calc-btn btn-clear" style="grid-column: span 2; background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-weight: bold; font-size: 12px; font-family: inherit;">C</button>
                     <button class="calc-btn" data-val="/" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-weight: bold;">/</button>
                     <button class="calc-btn" data-val="*" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-weight: bold;">*</button>
 
-                    <button class="calc-btn" data-val="7" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px;">7</button>
-                    <button class="calc-btn" data-val="8" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px;">8</button>
-                    <button class="calc-btn" data-val="9" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px;">9</button>
-                    <button class="calc-btn" data-val="-" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-weight: bold;">-</button>
+                    <button class="calc-btn" data-val="7" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-family: inherit;">7</button>
+                    <button class="calc-btn" data-val="8" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-family: inherit;">8</button>
+                    <button class="calc-btn" data-val="9" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-family: inherit;">9</button>
+                    <button class="calc-btn" data-val="-" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-family: inherit; font-weight: bold;">-</button>
 
-                    <button class="calc-btn" data-val="4" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px;">4</button>
-                    <button class="calc-btn" data-val="5" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px;">5</button>
-                    <button class="calc-btn" data-val="6" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px;">6</button>
-                    <button class="calc-btn" data-val="+" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-weight: bold;">+</button>
+                    <button class="calc-btn" data-val="4" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-family: inherit;">4</button>
+                    <button class="calc-btn" data-val="5" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-family: inherit;">5</button>
+                    <button class="calc-btn" data-val="6" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-family: inherit;">6</button>
+                    <button class="calc-btn" data-val="+" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-family: inherit; font-weight: bold;">+</button>
 
-                    <button class="calc-btn" data-val="1" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px;">1</button>
-                    <button class="calc-btn" data-val="2" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px;">2</button>
-                    <button class="calc-btn" data-val="3" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px;">3</button>
-                    <button class="calc-btn btn-equals" style="grid-row: span 2; background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-weight: bold; height: 100%;">=</button>
+                    <button class="calc-btn" data-val="1" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-family: inherit;">1</button>
+                    <button class="calc-btn" data-val="2" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-family: inherit;">2</button>
+                    <button class="calc-btn" data-val="3" style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-family: inherit;">3</button>
+                    <button class="calc-btn btn-equals" style="grid-row: span 2; background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-family: inherit; font-weight: bold; height: 100%;">=</button>
 
-                    <button class="calc-btn" data-val="0" style="grid-column: span 2; background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px;">0</button>
-                    <button class="calc-btn" data-val="." style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-weight: bold;">.</button>
+                    <button class="calc-btn" data-val="0" style="grid-column: span 2; background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-family: inherit;">0</button>
+                    <button class="calc-btn" data-val="." style="background: #C8C8C8; border: 2px solid; border-color: #fff #7b776b #7b776b #fff; padding: 4px; font-weight: bold; font-family: inherit;">.</button>
                 </div>
             </div>
-        `
+        `;
     },
 
     init(windowEl) {
