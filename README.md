@@ -1,25 +1,28 @@
 # KlassicOS
 
+<p align="center">
+  <img src="https://img.shields.io/badge/JavaScript-Vanilla-yellow?logo=javascript" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/Bundler-Vite-646CFF?logo=vite" alt="Vite" />
+  <img src="https://img.shields.io/badge/Style-CSS-1572B6?logo=css" alt="CSS" />
+  <img src="https://img.shields.io/badge/License-MIT-green?" alt="License" />
+</p>
+
 A web-based **Operating System** (**OS**) that recreates the classic look and feel of **KDE 1.0** and old computer in general.
 
 KlassicOS is build with `HTML`, `CSS`, and **vanilla** `JavaScript`.
 
 KlassicOS use the retro aesthetic of late-90s Linux environments.
 
-
-
 https://github.com/user-attachments/assets/adbd79c2-3965-4952-8ca9-e7f48b7d5899
-
-
 
 ![](./src/assets/readme/main.png)
 
-![](./src/assets/readme/icons.png)
+<p align="center">
+  <img src="./src/assets/readme/icons.png" width="48%" />
+  <img src="./src/assets/readme/menu.png" width="48%" />
+</p>
 
-
-![](./src/assets/readme/menu.png)
-
-## ⭐ Features
+## Features
 
 * **Window Management**: Draggable, resizable, and stackable windows with classic 3D borders
 * **BIOS Boot Animation**: An animation inspired by old computer startup
@@ -31,11 +34,11 @@ https://github.com/user-attachments/assets/adbd79c2-3965-4952-8ca9-e7f48b7d5899
 * * **KCalc**: Just a simple calculator
 * **Lightweight Architecture**: Client-side only, bundled with Vite
 
-## 🚀 Live Demo
+## Live Demo
 
 You can try out **KlassicOS** here: **[Vercel - KlassicOS](https://klassic-os.vercel.app/)**
 
-## 🛠️ Local Development
+## Local Development
 
 To run this project locally on your machine:
 
@@ -59,11 +62,11 @@ npm run dev
 pnpm dev
 ```
 
-## 🧠 Use of AI
+## Use of AI
 
 * Gemini: Brainstorming + README.md skeleton
 
-## 💼 Legal
+## Legal
 
 This project is open-source and available under the [MIT License](./LICENSE)
 
