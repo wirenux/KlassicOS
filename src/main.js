@@ -84,7 +84,7 @@ async function runBiosBoot() {
 
   const lines = [
     { text: "AMIBIOS (C) 1998 American Megatrends, Inc.", delay: 400 },
-    { text: "KDE-OS V1.00 Release E8.21.0X", delay: 300 },
+    { text: "KlassicOS V?.?? Release E8.21.0X", delay: 300 },
     { text: "CPU: Retro-Processor core running at 233 MHz", delay: 500 },
     { text: "------------------------------------------------", delay: 100 },
     { text: "Checking RAM : <span id='bios-ram'>0KB</span>", delay: 0, isRam: true },
