@@ -4,12 +4,14 @@ import { TerminalApp } from './apps/terminal.js';
 import { AboutApp } from './apps/about.js';
 import { EditorApp } from './apps/editor.js';
 import { BrowserApp } from './apps/netscape.js';
+import { CalculatorApp } from './apps/calculator.js';
 
 const APP_REGISTRY = {
   terminal: TerminalApp,
   about: AboutApp,
   editor: EditorApp,
   browser: BrowserApp,
+  calculator: CalculatorApp,
 };
 
 document.querySelector('#app').innerHTML = `
@@ -49,6 +51,7 @@ document.querySelector('#app').innerHTML = `
         <div class="k-menu-item" data-app="browser">Netscape Navigator</div>
         <div class="k-menu-item" data-app="terminal">Konsole</div>
         <div class="k-menu-item" data-app="editor">KWrite</div>
+        <div class="k-menu-item" data-app="calculator">KCalc</div>
         <div class="k-menu-separator"></div>
         <div class="k-menu-item" data-app="about">System Info</div>
       </div>
@@ -67,7 +70,7 @@ function updateClock() {
 
   const hours = String(now.getHours()).padStart(2, '0');
   const minutes = String(now.getMinutes()).padStart(2, '0');
-  
+
   const month = now.toLocaleDateString('en-US', { month: 'short' });
   const day = String(now.getDate()).padStart(2, '0');
 
@@ -202,7 +205,7 @@ function spawnWindow(appConfig) {
   resizeHandle.addEventListener('mousedown', (e) => {
     e.stopPropagation();
     e.preventDefault();
-    
+
     if (windowEl.classList.contains('maximized')) {
       return;
     }
@@ -277,7 +280,7 @@ kMenu.addEventListener('click', (e) => {
 const workspace = document.getElementById('workspace');
 workspace.addEventListener('dblclick', (e) => {
   const shortcut = e.target.closest('.desktop-shortcut');
-  
+
   if (!shortcut) {
     return;
   }

@@ -1,9 +1,17 @@
 @font-face {
-    font-family: "departureMono";
-    src: url('assets/fonts/DepartureMono-Regular.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "departureMono";
+  src: url('assets/fonts/DepartureMono-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "W95F";
+  src: url('assets/fonts/W95F.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 html, body {
